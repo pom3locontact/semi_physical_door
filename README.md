@@ -25,6 +25,7 @@ to create the door that suit Your indie-needs.
 
 
 ### 🔊 Primitive Sound Simulation:
+⚠️ WARNING: Semi-Working, still needs to be polished.
 If we go with an realistic, imversive door,
 we can't cheap out on the sound's. Its half
 of the effect! Especially if YOU are creating
