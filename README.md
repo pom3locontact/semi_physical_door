@@ -8,8 +8,11 @@ Quick Descreption: Recreation of VR-Style Physical Doors in the GODOT Engine for
 
 > This is only a demo, it's not perfect or usable for production-ready products by any means. Its an form of template/inspiration. These door aren't a Physcial Object, rotated by math, not transfered movment source from Player's Velocity. High Customization. Semi-Open Source.
 
+
+
 ### 📽️ Demo presentation:
 Will be here, still editing it...
+
 
 
 ### ⚙️ Highly Customizable:
@@ -18,6 +21,8 @@ You can **mix and match** all of the settings,
 to create the door that suit Your indie-needs.
 
 <img width="1133" height="236" alt="Screenshot 2026-02-01 132536" src="https://github.com/user-attachments/assets/fa81610f-51fd-4820-8e89-8c4721fbb268" />
+
+
 
 ### 🔊 Primitive Sound Simulation:
 If we go with an realistic, imversive door,
@@ -38,9 +43,15 @@ to play coresponding sounds.
 - Creativity, all usecases are diffrent. Feel free to
 modify it and build on top of it **if** permision is granted.
 
+
+
 ### 🦾 IK Hand:
 Due to the version on which this demo was developed on - 4.3
 The Godot IK systems are not as advanced as in the newer engine versions.
+You can easly limit the hinges of hand rotation bones, to prevent
+any hand-visual related bugs.
+
+
 
 ### Math behind it:
 Nothing to crazy, godot has build-in implementation
@@ -51,6 +62,8 @@ use it properly, there are some math topics you need to learn,
 to use this demo to its full potential:
 - vector projection formula / DOT product
 - vectors
+
+
 
 ### 🍈 Contact Me:
 Discord: somepomelo
