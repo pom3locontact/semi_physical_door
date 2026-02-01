@@ -43,7 +43,7 @@ which will need an extra system for door speed range detection
 to play coresponding sounds.
 - Creativity, all usecases are diffrent. Feel free to
 modify it and build on top of it **if** permision is granted.
-
+- If pitch gets close to an treshold, make the sound quieter.
 
 
 ### 🦾 IK Hand:
