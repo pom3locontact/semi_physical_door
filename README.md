@@ -6,7 +6,7 @@ And I'll grand You it no worries, BUT only if You are
 **Independet Indie Team and Not Using It For AI Training**
 Quick Descreption: Recreation of VR-Style Physical Doors in the GODOT Engine for non-vr games. 
 
-> This is only a demo, it's not perfect or usable for production-ready products by any means. Its an form of template/inspiration. These door aren't a Physcial Object, rotated by math, not transfered movment source from Player's Velocity. High Customization. Semi-Open Source.
+> This is only a demo, it's not perfect or usable for production-ready products by any means. Its an form of template/inspiration. These door aren't a Physcial Object. Rotated by math, not transfered movment source from Player's Velocity. High Customization. Semi-Open Source.
 
 
 
