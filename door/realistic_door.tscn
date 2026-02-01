@@ -1,0 +1,88 @@
+[gd_scene load_steps=10 format=3 uid="uid://3vsur2pa6en"]
+
+[ext_resource type="Script" path="res://door/door_mainlogic.gd" id="1_qx62i"]
+[ext_resource type="AudioStream" uid="uid://dyoklngbe0x24" path="res://door/sounds/doorMove.mp3" id="2_kjjqe"]
+[ext_resource type="AudioStream" uid="uid://br2k1ehpxvdww" path="res://door/sounds/opening-door-411632 PIXABAY.mp3" id="2_ogku2"]
+[ext_resource type="AudioStream" uid="uid://ched253s4jpol" path="res://door/sounds/door-close-79921 PIXABAY.mp3" id="3_6uqd1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rajy1"]
+albedo_color = Color(0.282684, 0.107349, 0.860934, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_535xa"]
+albedo_color = Color(0.992719, 0.096012, 7.70092e-07, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6lusx"]
+albedo_color = Color(0.903637, 2.31028e-06, 0.55142, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dscsd"]
+size = Vector3(1, 2, 0.08)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1jflf"]
+resource_local_to_scene = true
+size = Vector3(1, 2, 1)
+
+[node name="TheDoorItSelf" type="StaticBody3D" groups=["door"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47, 1, 0)
+script = ExtResource("1_qx62i")
+
+[node name="HandPositionPointOfIntrest" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.3, 0)
+
+[node name="PointA" type="Marker3D" parent="HandPositionPointOfIntrest"]
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="HandPositionPointOfIntrest/PointA"]
+transform = Transform3D(0.095, 0, 0, 0, 0.095, 0, 0, 0, 0.095, 0, 0, 0)
+material = SubResource("StandardMaterial3D_rajy1")
+
+[node name="PointB" type="Marker3D" parent="HandPositionPointOfIntrest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="HandPositionPointOfIntrest/PointB"]
+transform = Transform3D(0.095, 0, 0, 0, 0.095, 0, 0, 0, 0.095, 0, 0, 0)
+material = SubResource("StandardMaterial3D_rajy1")
+
+[node name="FloatingPoint" type="Node3D" parent="HandPositionPointOfIntrest"]
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="HandPositionPointOfIntrest/FloatingPoint"]
+transform = Transform3D(0.11, 0, 0, 0, 0.11, 0, 0, 0, 0.11, 0, 0, 0)
+material = SubResource("StandardMaterial3D_535xa")
+
+[node name="DoorKnob" type="Marker3D" parent="HandPositionPointOfIntrest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.614317, -0.241552, 0)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="HandPositionPointOfIntrest/DoorKnob"]
+radius = 0.05
+material = SubResource("StandardMaterial3D_6lusx")
+
+[node name="DoorMesh" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.47, 0, 0)
+use_collision = true
+size = Vector3(1, 2, 0.08)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.47, 0, 0)
+shape = SubResource("BoxShape3D_dscsd")
+
+[node name="HandAnimationArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.47, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HandAnimationArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_1jflf")
+
+[node name="MovingDoorSound" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_kjjqe")
+volume_db = -80.0
+autoplay = true
+
+[node name="OpenDoorSound" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_ogku2")
+
+[node name="CloseDoorSound" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_6uqd1")
+
+[connection signal="body_entered" from="HandAnimationArea" to="." method="_on_hand_animation_area_body_entered"]
+[connection signal="body_exited" from="HandAnimationArea" to="." method="_on_hand_animation_area_body_exited"]

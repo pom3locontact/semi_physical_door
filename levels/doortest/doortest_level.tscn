@@ -1,0 +1,227 @@
+[gd_scene load_steps=8 format=3 uid="uid://cpatkol3xluta"]
+
+[ext_resource type="Texture2D" uid="uid://cdce7wyu3tlx4" path="res://levels/doortest/textures/demo4_15.png" id="1_5ci8u"]
+[ext_resource type="PackedScene" uid="uid://de5p3klliy8kd" path="res://player/player.tscn" id="1_rxj8w"]
+[ext_resource type="PackedScene" uid="uid://3vsur2pa6en" path="res://door/realistic_door.tscn" id="3_mcxve"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1w7j8"]
+albedo_texture = ExtResource("1_5ci8u")
+uv1_scale = Vector3(5, 5, 5)
+texture_filter = 2
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_obyva"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_3w4j0"]
+sky_material = SubResource("ProceduralSkyMaterial_obyva")
+
+[sub_resource type="Environment" id="Environment_2wrfe"]
+background_mode = 2
+sky = SubResource("Sky_3w4j0")
+tonemap_mode = 2
+
+[node name="DoortestLevel" type="Node3D"]
+
+[node name="platform" type="CSGBox3D" parent="."]
+material_override = SubResource("StandardMaterial3D_1w7j8")
+use_collision = true
+size = Vector3(30, 0, 30)
+
+[node name="visuals" type="Node" parent="."]
+
+[node name="enviroment" type="Node" parent="visuals"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="visuals/enviroment"]
+environment = SubResource("Environment_2wrfe")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="visuals/enviroment"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="3dlables" type="Node" parent="visuals"]
+
+[node name="INFOLABEL" type="Label3D" parent="visuals/3dlables"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0.5, 6.5, -10)
+text = "Mix and match these how ever you like it!
+CC0/Public Domain use ONLY for independent indie games/indie teams.
+Contributions and Atributions welcomed <3
+#AiFreeProject"
+font_size = 62
+outline_size = 57
+
+[node name="INFOLABEL2" type="Label3D" parent="visuals/3dlables"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.5, 1.3, 13)
+text = "Number 1 song listend to, while making this demo:
+Stand On It - Bruce Springsteen
+Ma quale idea - Pino D'Angiò
+Drinking Water - Antônio Carlos Jobim, Frank Sinatra
+Uncontrollable Urge - DEVO
+Jump - Van Halen (love rp1)
+"
+font_size = 11
+outline_size = 7
+
+[node name="label1" type="Label3D" parent="visuals/3dlables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 2.5, -7)
+billboard = 1
+text = "NORMAL"
+font_size = 62
+
+[node name="label2" type="Label3D" parent="visuals/3dlables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 2.5, -7)
+billboard = 1
+text = "LOCKED"
+font_size = 62
+
+[node name="label3" type="Label3D" parent="visuals/3dlables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 2.5, -7)
+billboard = 1
+text = "DOUBLE
+SIDED"
+font_size = 45
+
+[node name="label4" type="Label3D" parent="visuals/3dlables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2.5, -7)
+billboard = 1
+text = "DOOR KNOB
+GRAB"
+font_size = 45
+
+[node name="label5" type="Label3D" parent="visuals/3dlables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2.5, -7)
+billboard = 1
+text = "HEAVY"
+font_size = 62
+
+[node name="label6" type="Label3D" parent="visuals/3dlables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2.5, -7)
+billboard = 1
+text = "SLOW"
+font_size = 62
+
+[node name="label7" type="Label3D" parent="visuals/3dlables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 2.5, -7)
+billboard = 1
+text = "FAST"
+font_size = 62
+
+[node name="label8" type="Label3D" parent="visuals/3dlables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 2.5, -7)
+billboard = 1
+text = "Detection Zone
+Adjusted by 
+Player SPEED"
+
+[node name="label9" type="Label3D" parent="visuals/3dlables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 2.5, -7)
+billboard = 1
+text = "Reversed
+Opening
+Side"
+
+[node name="label10" type="Label3D" parent="visuals/3dlables"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.25, 2.5, -4.75)
+billboard = 1
+text = "Tighter
+Angle Range"
+font_size = 41
+
+[node name="label13" type="Label3D" parent="visuals/3dlables"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.25, 2.5, -2.75)
+billboard = 1
+text = "Wider
+Angle Range"
+font_size = 41
+
+[node name="label11" type="Label3D" parent="visuals/3dlables"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.1959, 2.5, 2.25338)
+billboard = 1
+text = "No Initial
+Rotation
+Limitations"
+font_size = 41
+
+[node name="label12" type="Label3D" parent="visuals/3dlables"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.1412, 2.5, 4.04662)
+billboard = 1
+text = "No Initial
+Rotation
+Limitations"
+font_size = 41
+
+[node name="label14" type="Label3D" parent="visuals/3dlables"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10.9588, 2.87614, -1.55338)
+billboard = 1
+text = "Most Enjoyable
+Settings
+In My Opinion"
+font_size = 27
+
+[node name="label15" type="Label3D" parent="visuals/3dlables"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10.9588, 2.37614, -1.55338)
+billboard = 1
+text = "Door Knob Grab
+Double Sided
+Speed Based Collision Size: 2
+Opening Angle: 80"
+font_size = 11
+outline_size = 8
+
+[node name="Player" parent="." instance=ExtResource("1_rxj8w")]
+
+[node name="RealisticDoorComponent" parent="." instance=ExtResource("3_mcxve")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -7)
+
+[node name="MostEnjoyable" parent="." instance=ExtResource("3_mcxve")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11, 1, -2)
+isDoubleSided = true
+openCloseRangeDegrees = 80.0
+doorKnobGrab = true
+playerSpeedCollisionAdjustment = 2.0
+
+[node name="Locked" parent="." instance=ExtResource("3_mcxve")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -7)
+isLocked = true
+
+[node name="DoubleSided" parent="." instance=ExtResource("3_mcxve")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, -7)
+isDoubleSided = true
+
+[node name="DoorKnobGrab" parent="." instance=ExtResource("3_mcxve")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -7)
+doorKnobGrab = true
+
+[node name="Heavy" parent="." instance=ExtResource("3_mcxve")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -7)
+doorHeavines = 10.0
+
+[node name="Slow" parent="." instance=ExtResource("3_mcxve")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -7)
+doorOpeningSpeed = 20.0
+
+[node name="Fast" parent="." instance=ExtResource("3_mcxve")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -7)
+doorOpeningSpeed = 80.0
+
+[node name="SpeedRun" parent="." instance=ExtResource("3_mcxve")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, -7)
+playerSpeedCollisionAdjustment = 4.0
+
+[node name="ReverseOpeningSide" parent="." instance=ExtResource("3_mcxve")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -7)
+reversedOpeningSide = true
+
+[node name="TighterAngleRange" parent="." instance=ExtResource("3_mcxve")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.25, 1, -5.25)
+openCloseRangeDegrees = 60.0
+
+[node name="WiderAngleRange" parent="." instance=ExtResource("3_mcxve")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.25, 1, -3.25)
+openCloseRangeDegrees = 150.0
+
+[node name="NoRotationLimitations" parent="." instance=ExtResource("3_mcxve")]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 10.95, 1, 1.85)
+
+[node name="NoRotationLimitations2" parent="." instance=ExtResource("3_mcxve")]
+transform = Transform3D(-0.766044, 0, -0.642788, 0, 1, 0, 0.642788, 0, -0.766044, 11.55, 1, 3.85)

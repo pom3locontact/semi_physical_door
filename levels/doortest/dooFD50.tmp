@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://cpatkol3xluta"]
+
+[ext_resource type="Texture2D" uid="uid://cdce7wyu3tlx4" path="res://levels/doortest/textures/demo4_15.png" id="1_5ci8u"]
+[ext_resource type="PackedScene" uid="uid://de5p3klliy8kd" path="res://player/player.tscn" id="1_rxj8w"]
+[ext_resource type="PackedScene" uid="uid://3vsur2pa6en" path="res://door/realistic_door.tscn" id="3_mcxve"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1w7j8"]
+albedo_texture = ExtResource("1_5ci8u")
+uv1_scale = Vector3(5, 5, 5)
+texture_filter = 2
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_obyva"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_3w4j0"]
+sky_material = SubResource("ProceduralSkyMaterial_obyva")
+
+[sub_resource type="Environment" id="Environment_2wrfe"]
+background_mode = 2
+sky = SubResource("Sky_3w4j0")
+tonemap_mode = 2
+
+[node name="DoortestLevel" type="Node3D"]
+
+[node name="platform" type="CSGBox3D" parent="."]
+material_override = SubResource("StandardMaterial3D_1w7j8")
+use_collision = true
+size = Vector3(30, 0, 30)
+
+[node name="visuals" type="Node" parent="."]
+
+[node name="enviroment" type="Node" parent="visuals"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="visuals/enviroment"]
+environment = SubResource("Environment_2wrfe")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="visuals/enviroment"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_rxj8w")]
+
+[node name="RealisticDoorComponent" parent="." instance=ExtResource("3_mcxve")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)

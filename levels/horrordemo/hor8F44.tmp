@@ -1,0 +1,98 @@
+[gd_scene load_steps=14 format=3 uid="uid://b30ovf0njg68"]
+
+[ext_resource type="PackedScene" uid="uid://de5p3klliy8kd" path="res://player/player.tscn" id="1_n2kla"]
+[ext_resource type="PackedScene" uid="uid://wc47kcidklnw" path="res://door/doorVariant1.tscn" id="2_e3xef"]
+[ext_resource type="PackedScene" uid="uid://bkd62sprku3xy" path="res://door/TheBaseMeshAssets/coffee_table_01.glb" id="3_gugr2"]
+[ext_resource type="PackedScene" uid="uid://cif06dolr8mi5" path="res://door/TheBaseMeshAssets/antique_clock_01.glb" id="3_uybfq"]
+[ext_resource type="PackedScene" uid="uid://c5casyahtsje8" path="res://door/TheBaseMeshAssets/coat_stand_01.glb" id="4_0paah"]
+[ext_resource type="PackedScene" uid="uid://c0tebbsj0scey" path="res://door/TheBaseMeshAssets/cigarette_packet.glb" id="6_pwxkh"]
+[ext_resource type="PackedScene" uid="uid://7oxmtxq1cqx2" path="res://door/TheBaseMeshAssets/architrave_ogee.glb" id="7_sv6tb"]
+[ext_resource type="PackedScene" uid="uid://dj4eo0wcavfx6" path="res://door/TheBaseMeshAssets/light_switch_01.glb" id="8_qqi4b"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wxuoq"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_2uy71"]
+sky_material = SubResource("ProceduralSkyMaterial_wxuoq")
+
+[sub_resource type="Environment" id="Environment_uaev0"]
+background_mode = 2
+sky = SubResource("Sky_2uy71")
+tonemap_mode = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_acg13"]
+size = Vector2(200, 200)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7pg03"]
+size = Vector3(0.78, 5.215, 11.375)
+
+[node name="Horrordemolevel" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+visible = false
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_uaev0")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+mesh = SubResource("PlaneMesh_acg13")
+
+[node name="Player" parent="." instance=ExtResource("1_n2kla")]
+WALK_SPEED = 0.5
+
+[node name="TheDoorItSelf" parent="." instance=ExtResource("2_e3xef")]
+transform = Transform3D(-4.80825e-08, 0, -1.1, 0, 1.1, 0, 1.1, 0, -4.80825e-08, 6.53, 1.1, -1)
+openCloseRangeDegrees = 90.0
+doorKnobGrab = true
+
+[node name="Assets" type="Node" parent="."]
+
+[node name="coat_stand_012" parent="Assets" instance=ExtResource("4_0paah")]
+transform = Transform3D(1.17109, 0, 0.313793, 0, 1.2124, 0, -0.313793, 0, 1.17109, 5.99158, 0.000441782, 0.957884)
+
+[node name="architrave_ogee2" parent="Assets" instance=ExtResource("7_sv6tb")]
+transform = Transform3D(-6.25073e-08, 0, -2.499, 0, 1.109, 0, 1.43, 0, -1.09235e-07, 6.51238, 1.19209e-07, -0.4838)
+
+[node name="architrave_ogee3" parent="Assets" instance=ExtResource("7_sv6tb")]
+transform = Transform3D(-6.25073e-08, 0, 2.499, 0, 1.109, 0, 1.43, 0, 1.09235e-07, 6.556, 1.19209e-07, -0.4838)
+
+[node name="Table" type="Node3D" parent="Assets"]
+
+[node name="antique_clock_012" parent="Assets/Table" instance=ExtResource("3_uybfq")]
+transform = Transform3D(0.82299, 0, -2.74892, 0, 2.86947, 0, 2.74892, 0, 0.82299, 6.1951, 0.962128, -2.70883)
+
+[node name="coffee_table_012" parent="Assets/Table" instance=ExtResource("3_gugr2")]
+transform = Transform3D(-9.03719e-08, 0, -2.06747, 0, 2.06747, 0, 2.06747, 0, -9.03719e-08, 6, 0, -2.16355)
+
+[node name="cigarette_packet2" parent="Assets/Table" instance=ExtResource("6_pwxkh")]
+transform = Transform3D(-1.06279, 2.30359, -0.198985, 0, 0.219, 2.53528, 2.31216, 1.05885, -0.0914642, 5.95342, 0.990351, -2.27502)
+
+[node name="light_switch_012" parent="Assets" instance=ExtResource("8_qqi4b")]
+transform = Transform3D(-7.70584e-08, 0, -1.76289, 0, 1.76289, 0, 1.76289, 0, -7.70584e-08, 6.50107, 1.22246, 0.430836)
+
+[node name="light_switch_013" parent="Assets" instance=ExtResource("8_qqi4b")]
+transform = Transform3D(-7.70584e-08, 0, 1.76289, 0, 1.76289, 0, -1.76289, 0, -7.70584e-08, 6.56491, 1.22246, 0.430836)
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="."]
+transform = Transform3D(0.0861386, 0, 0, 0, 1, 0, 0, 0, 1, 6.53223, 2.15309, -6.72407)
+use_collision = true
+mesh = SubResource("BoxMesh_7pg03")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="."]
+transform = Transform3D(0.0861386, 0, 0, 0, 1, 0, 0, 0, 1, 6.53223, 4.81353, -0.383255)
+use_collision = true
+mesh = SubResource("BoxMesh_7pg03")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="."]
+transform = Transform3D(0.0861386, 0, 0, 0, 1, 0, 0, 0, 1, 6.53223, 2.1265, 5.76021)
+use_collision = true
+mesh = SubResource("BoxMesh_7pg03")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.56384, 1.69684, -2.51183)
+use_collision = true
+flip_faces = true
+size = Vector3(17.1643, 5.13733, 9.76968)
